@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Victor's Bar</title>
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Smythe&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- BANNER -->
+    <header class="banner">
+      <h1 class="header">Victor's Diner</h1>
+      <h3 class="sub-header">The best burgers and pizzas in town</h3>
+    </header>
+    <!-- MAIN MENU SECTION -->
+    <main>
+      <!-- ALL AVAILABLE MENU ITEMS -->
+      <section class="menu-items">
+        <div class="single-item"></div>
+      </section>
+      <!-- CHECKOUT SECTION -->
+      <section class="checkout-container hidden">
+        <div class="single-checkout-item"></div>
+        <hr class="divider" />
+        <div class="total-checkout-price"></div>
+        <button class="btn checkout-btn"></button>
+      </section>
+      <!-- CONFIRMATION SCREEN -->
+      <section class="checkout-confirmation-screen hidden">
+        <form class="card-info-form">
+          <input type="text" name="cardholder-name" class="card-input" />
+          <input type="text" name="card-number" class="card-input" />
+          <input type="text" name="card-cvv" class="card-input" />
+          <button class="btn confirm-btn"></button>
+        </form>
+      </section>
+    </main>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
