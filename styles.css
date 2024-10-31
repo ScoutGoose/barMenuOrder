@@ -2,6 +2,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: var(--font-family-main);
+  font-weight: 100;
 }
 
 /* CUSTOM VARIABLES */
@@ -11,14 +13,14 @@
   --font-color-main: #000;
   --font-color-secondary: #8b8b8b;
 }
+
 /* MOBILE */
 /* BANNER */
+
 .banner {
   background: url("./assets/images/banner.png") center/cover no-repeat;
   height: 10.5rem;
   color: #fff;
-  font-family: var(--font-family-main);
-  font-weight: 100;
   padding: 2.875rem;
 }
 
@@ -33,4 +35,22 @@
   font-size: 1.375rem;
   line-height: 16px;
   font-weight: normal;
+}
+
+/* MENU ITEM */
+
+.single-item {
+  border: 1px solid black;
+  display: flex;
+  align-items: flex-start;
+  height: 8.75rem;
+}
+
+.item-icon-container {
+  font-size: 5rem;
+  line-height: 90px;
+}
+
+.item-add-btn {
+  margin-left: auto;
 }
