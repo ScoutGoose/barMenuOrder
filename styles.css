@@ -9,10 +9,15 @@
 h3 {
   font-size: 1.75rem;
 }
+
 .btn,
 .remove-btn,
 .item-add-btn {
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 /* CUSTOM VARIABLES */
 :root {
