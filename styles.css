@@ -19,6 +19,10 @@ h3 {
 .hidden {
   display: none;
 }
+
+.disabled {
+  pointer-events: none;
+}
 /* CUSTOM VARIABLES */
 :root {
   --font-family-main: "Smythe", system-ui;
@@ -51,11 +55,9 @@ h3 {
 main {
   background: #fff;
   padding: 4rem 2.8rem;
-  position: relative;
 }
 
 .single-item {
-  /* box-sizing: content-box; */
   border-bottom: 1px solid #d2d2d2;
   display: flex;
   align-items: flex-start;
@@ -154,7 +156,7 @@ main {
   margin-top: 3rem;
 }
 
-/* CARD INFO */
+/* ORDER CONFIRMATION */
 .checkout-confirmation-screen h2 {
   font-family: var(--font-family-secondary);
   font-weight: bold;
@@ -170,7 +172,6 @@ main {
   width: calc(100% - 90px);
   background: #fff;
   border-radius: 3px;
-  /* pointer-events: none; */
   box-shadow: 0px 0px 83px -13px rgba(0, 0, 0, 0.75);
 }
 
@@ -192,4 +193,18 @@ input {
 
 .confirm-btn {
   margin-top: 3rem;
+}
+
+#close-confirmation-screen {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  color: rgb(146, 8, 8);
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+#close-confirmation-screen:hover {
+  color: rgb(255, 0, 0);
 }
