@@ -208,3 +208,13 @@ input {
 #close-confirmation-screen:hover {
   color: rgb(255, 0, 0);
 }
+
+/* SUCCESS MESSAGE */
+.confirmation-message-container {
+  color: #065f46;
+  background: #ecfdf5;
+  text-align: center;
+  font-size: 2rem;
+  padding: 3rem;
+  margin-top: 1rem;
+}

@@ -1,8 +1,39 @@
 import menuArray from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 const orderArr = [];
-// localStorage.clear();
+// FORM SUBMITION
+document
+  .querySelector(".card-info-form")
+  .addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.querySelector(`[name=cardholder-name]`);
+    const cardNum = document.querySelector(`[name=card-number]`);
+    const cardCVV = document.querySelector(`[name=card-cvv]`);
+    if (
+      validateName(name.value) &&
+      validateCardNumber(cardNum.value) &&
+      validateCVV(cardCVV.value)
+    ) {
+      closeConfirmationScreen();
+      orderArr.splice(0, orderArr.length);
+      renderOrder();
+      document.querySelector(`main`).innerHTML += `
+      <div class="confirmation-message-container">
+        <p class="confirmation-message">
+          Thanks, ${name.value}! Your order is on its way!
+        </p>
+      </div>
+      `;
+      name.value = "";
+      cardNum.value = "";
+      cardCVV.value = "";
+      localStorage.clear();
+    }
+  });
+// CHECK LOCAL STORAGE ON START
 checkLS();
+
+// GLOBAL EVENT LISTENER
 document.addEventListener("click", (event) => {
   if (event.target.dataset.addItemId) {
     addItemToOrder(+event.target.dataset.addItemId);
@@ -40,7 +71,6 @@ function addItemToOrder(id) {
   orderArr.push({ ...foundItem, orderId: uuidv4() });
   // ADD ITEMS TO THE LOCAL STORAGE
   localStorage.setItem(`myOrder`, JSON.stringify(orderArr));
-  console.log(orderArr);
   renderOrder();
 }
 
@@ -92,7 +122,6 @@ function showConfirmationScreen() {
     .querySelector(`.checkout-confirmation-screen`)
     .classList.remove("hidden");
   document.querySelector(`main`).classList.add(`disabled`);
-  checkAndConfirm();
 }
 
 // CLOSE ORDER CONFIRMATION SCREEN
@@ -104,6 +133,32 @@ function closeConfirmationScreen() {
 }
 
 // CHECK AND CONFIRM ORDER
-function checkAndConfirm() {
-  const inputVal = document.querySelector(`[name=cardholder-name]`).value;
+function validateName(name) {
+  const regex = /^([a-zA-Z ]){2,50}$/;
+  return regex.test(name);
+}
+// CARD NUMBER VALIDATION
+function validateCardNumber(cardNum) {
+  const visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+  const mastercardRegEx = /^(?:5[1-5][0-9]{14})$/;
+  const amexpRegEx = /^(?:3[47][0-9]{13})$/;
+  const discovRegEx = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
+  let isValid = false;
+
+  if (visaRegEx.test(cardNum)) {
+    isValid = true;
+  } else if (mastercardRegEx.test(cardNum)) {
+    isValid = true;
+  } else if (amexpRegEx.test(cardNum)) {
+    isValid = true;
+  } else if (discovRegEx.test(cardNum)) {
+    isValid = true;
+  }
+  return isValid;
+}
+
+// CVV VALIDATION
+function validateCVV(cvv) {
+  const regex = /^[0-9]{3,4}$/;
+  return regex.test(cvv);
 }
